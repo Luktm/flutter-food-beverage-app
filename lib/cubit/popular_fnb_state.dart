@@ -8,11 +8,12 @@ class PopularFNBInitial extends PopularFNBState {}
 class PopularFNBFetching extends PopularFNBState {}
 
 class PopularFNBFetched extends PopularFNBState {
-  final PopularMeal popularMeal;
-  PopularFNBFetched({required this.popularMeal});
+  final List<Meal> popularMeals;
+  final List<Drink> popularBeverages;
+  PopularFNBFetched({required this.popularMeals, required this.popularBeverages});
 
   @override
-  List<Object> get props => [popularMeal];
+  List<Object> get props => [popularMeals, popularBeverages];
 
   @override
   bool get stringify => true;

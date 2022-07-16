@@ -1,6 +1,6 @@
 import 'package:astro_test/cubit/fnb_category_cubit.dart';
 import 'package:astro_test/cubit/popular_fnb_cubit.dart';
-import 'package:astro_test/repository/meal_repository.dart';
+import 'package:astro_test/repository/fnb_repository.dart';
 import 'package:astro_test/screens/beverage_home_screen.dart';
 import 'package:astro_test/screens/meal_home_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,13 +15,13 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  final MealRepository mealRepository  = MealRepository();
+  final FNBRepository mealRepository  = FNBRepository();
 
   @override
   Widget build(BuildContext context) {
 
     FNBCategoryCubit mealGategoryCubit = FNBCategoryCubit(mealRepository: mealRepository);
-    PopularFNBCubit popularMealCubit = PopularFNBCubit(mealRepository: mealRepository);
+    PopularFNBCubit popularMealCubit = PopularFNBCubit(fnbRepository: mealRepository);
     
     return MultiBlocProvider(
       providers: [

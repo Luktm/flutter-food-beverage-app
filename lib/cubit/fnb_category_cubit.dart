@@ -1,13 +1,13 @@
 import 'package:astro_test/models/beverage_category.dart';
 import 'package:astro_test/models/food_category.dart';
-import 'package:astro_test/repository/meal_repository.dart';
+import 'package:astro_test/repository/fnb_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
 part 'fnb_category_state.dart';
 
 class FNBCategoryCubit extends Cubit<FNBCategoryState> {
-  final MealRepository mealRepository;
+  final FNBRepository mealRepository;
 
   FNBCategoryCubit({required this.mealRepository}) : super(FNBCategoryInitial());
 

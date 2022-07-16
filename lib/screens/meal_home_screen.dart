@@ -127,9 +127,9 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
                   return SizedBox(
                     height: MediaQuery.of(context).size.height / 1.4,
                     child: ListView.builder(
-                        itemCount: state.popularMeal.meals.length,
+                        itemCount: state.popularMeals.length,
                         itemBuilder: (BuildContext context, int index) {
-                          final meal = state.popularMeal.meals[index];
+                          final meal = state.popularMeals[index];
 
                           return Column(
                             children: [

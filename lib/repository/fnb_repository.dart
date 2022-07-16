@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:astro_test/models/beverage_category.dart';
 import 'package:astro_test/models/food_category.dart';
+import 'package:astro_test/models/popular_beverage.dart';
 import 'package:astro_test/models/popular_meal.dart';
 import 'package:http/http.dart' as http;
 
-class MealRepository {
+class FNBRepository {
 
   Future<FoodCategory> fetchMealCategory() async {
       try {
@@ -21,7 +24,7 @@ class MealRepository {
       }
   }
 
-  Future<PopularMeal> fetchMealByCategoryName({required name}) async{
+  Future<PopularMeal> fetchMealByCategoryName({required String name}) async{
     try {
       final mealByNameUri = Uri.parse("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + name);
       final response = await http.get(mealByNameUri);
@@ -48,6 +51,21 @@ class MealRepository {
       }
 
       return beverageCategoryItemsFromJson(response.body);
+    } catch(error) {
+      rethrow;
+    }
+  }
+
+  Future<PopularBeverage> fetchBeverageByCategoryName({required name}) async{
+    try {
+      final beverageByNameUri = Uri.parse("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + name);
+      final response = await http.get(beverageByNameUri);
+
+      if(response.statusCode != 200) {
+        throw "Something went wrong";
+      }
+      
+      return  popularBeverageFromJson(response.body);
     } catch(error) {
       rethrow;
     }

@@ -13,7 +13,7 @@ class PopularMeal {
     List<Meal> meals;
 
     factory PopularMeal.fromJson(Map<String, dynamic> json) => PopularMeal(
-        meals: List<Meal>.from(json["meals"].map((x) => Meal.fromJson(x))),
+        meals: json["meals"] == null ? [] : List<Meal>.from(json["meals"].map((x) => Meal.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
