@@ -1,3 +1,4 @@
+import 'package:astro_test/models/beverage_category.dart';
 import 'package:astro_test/models/popular_beverage.dart';
 import 'package:astro_test/models/popular_meal.dart';
 import 'package:astro_test/repository/fnb_repository.dart';
@@ -24,7 +25,7 @@ class PopularFNBCubit extends Cubit<PopularFNBState> {
     try {
       emit(PopularFNBFetching());
       final PopularBeverage popularBeverageItems = await fnbRepository.fetchBeverageByCategoryName(name: name);
-      emit(PopularFNBFetched(popularMeals: const[], popularBeverages: popularBeverageItems.drinks));
+      emit(PopularFNBFetched(popularMeals: const[], popularBeverages: popularBeverageItems.drinks ?? []));
     } catch(error) {
       emit(PopularFNBFailedFetch(message: error.toString()));
     }

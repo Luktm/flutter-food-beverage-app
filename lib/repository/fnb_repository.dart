@@ -17,6 +17,7 @@ class FNBRepository {
           throw "Something went wrong";
         }
         
+        
         return foodCategoryItemsFromJson(response.body);
         
       } catch(error) {
@@ -58,14 +59,14 @@ class FNBRepository {
 
   Future<PopularBeverage> fetchBeverageByCategoryName({required name}) async{
     try {
-      final beverageByNameUri = Uri.parse("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + name);
+      final beverageByNameUri = Uri.parse("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=$name");
       final response = await http.get(beverageByNameUri);
 
       if(response.statusCode != 200) {
         throw "Something went wrong";
       }
       
-      return  popularBeverageFromJson(response.body);
+      return PopularBeverage.fromJson(jsonDecode(response.body));
     } catch(error) {
       rethrow;
     }

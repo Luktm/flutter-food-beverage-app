@@ -18,7 +18,7 @@ class BeverageHomeScreen extends StatefulWidget {
 
 class _BeverageHomeScreenState extends State<BeverageHomeScreen> {
   TextEditingController controller = TextEditingController();
-  String defaultCategoryName = "Ordinary Drink";
+  String defaultCategoryName = "";
 
   @override
   void initState() {
@@ -55,7 +55,11 @@ class _BeverageHomeScreenState extends State<BeverageHomeScreen> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                defaultCategoryName = state.beveragecategories[index].strCategory;
+                                if(defaultCategoryName == state.beveragecategories[index].strCategory) {
+                                  return;
+                                }
+                                
+                                defaultCategoryName = state.beveragecategories[index].strCategory.split("/").first.trim();
                                 context.read<PopularFNBCubit>().fetchBeverageByCategoryName(name: defaultCategoryName);
                               },
                               child: Container(
@@ -119,7 +123,7 @@ class _BeverageHomeScreenState extends State<BeverageHomeScreen> {
                                   image: DecorationImage(
                                     fit: BoxFit.cover,
                                     image: NetworkImage(
-                                      drink.strDrinkThumb,
+                                      drink.strDrinkThumb ?? "",
                                     ),
                                   ),
                                 ),
@@ -136,7 +140,7 @@ class _BeverageHomeScreenState extends State<BeverageHomeScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      drink.strDrink,
+                                      drink.strDrink ?? "",
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                           fontSize: 18,

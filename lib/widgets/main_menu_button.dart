@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 class MainMenuButton extends StatelessWidget {
   final String title;
   final String itemCount;
+  final String imgUrl;
   final Function()? onTap;
 
-  const MainMenuButton({Key? key, required this.title, required this.itemCount, required this.onTap})
+  const MainMenuButton({Key? key, required this.title, required this.itemCount, required this.onTap, required this.imgUrl})
       : super(key: key);
 
   @override
@@ -73,7 +74,7 @@ class MainMenuButton extends StatelessWidget {
               ),
               child: CircleAvatar(
                 radius: 35,
-                backgroundImage: NetworkImage("https://picsum.photos/200"),
+                backgroundImage: NetworkImage(imgUrl),
               ),
             ),
           ),

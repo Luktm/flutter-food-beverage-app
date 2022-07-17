@@ -24,50 +24,54 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      title: "Menu",
+        title: "Menu",
         body: Stack(
-      children: [
-        Positioned.fill(
-          child: CustomPaint(
-            painter: SquarePainter(),
-          ),
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    Center(
-                      child: SearchInput(
-                        key: Key("main_menu_screen_search_field"),
-                        controller: controller,
-                      ),
-                    )
-                  ],
-                ),
+            Positioned.fill(
+              child: CustomPaint(
+                painter: SquarePainter(),
               ),
             ),
-            SizedBox(height: 50),
-            MainMenuButton(
-              title: "Food",
-              itemCount: Random().nextInt(1000).toString(),
-              onTap: () => Navigator.pushNamed(context, MealHomeScreen.routeName),
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            MainMenuButton(
-                title: "Beverages",
-                itemCount: Random().nextInt(1000).toString(),
-                onTap: () => Navigator.pushNamed(context, BeverageHomeScreen.routeName),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 10),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                      children: [
+                        Center(
+                          child: SearchInput(
+                            key: Key("main_menu_screen_search_field"),
+                            controller: controller,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: 50),
+                MainMenuButton(
+                  title: "Food",
+                  imgUrl: "https://i.picsum.photos/id/488/1772/1181.jpg?hmac=psl3qLyDefO6AYqU4TJQ8PNCjS8RdPiP_vRLB8WPVjY",
+                  itemCount: Random().nextInt(1000).toString(),
+                  onTap: () =>
+                      Navigator.pushNamed(context, MealHomeScreen.routeName),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                MainMenuButton(
+                  title: "Beverages",
+                  imgUrl: "https://i.picsum.photos/id/431/5398/3599.jpg?hmac=bc325kFqsm626RGhgs-XwG_GFqd4x3VmXtramO12qL8",
+                  itemCount: Random().nextInt(1000).toString(),
+                  onTap: () => Navigator.pushNamed(
+                      context, BeverageHomeScreen.routeName),
+                ),
+              ],
             ),
           ],
-        ),
-      ],
-    ));
+        ));
   }
 }
