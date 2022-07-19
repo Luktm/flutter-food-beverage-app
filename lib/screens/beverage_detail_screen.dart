@@ -1,9 +1,6 @@
 import 'package:astro_test/cubit/fnb_detail_cubit.dart';
-import 'package:astro_test/models/detail_argument.dart';
-import 'package:astro_test/models/drinks.dart';
 import 'package:astro_test/models/drink.dart';
 import 'package:astro_test/models/ingredient_measure.dart';
-import 'package:astro_test/models/meals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -74,12 +71,12 @@ class _MealDetailScreenState extends State<BeverageDetailScreen>
                               left: 10,
                               child: Row(
                                 children: [
-                                  Icon(Icons.star_outlined),
-                                  Text("4.5"),
+                                  const Icon(Icons.star_outlined),
+                                  const Text("4.5"),
                                   _sizedBox,
-                                  Text("•"),
+                                  const Text("•"),
                                   _sizedBox,
-                                  Text("15:06"),
+                                  const Text("15:06"),
                                 ],
                               ),
                             ),
@@ -106,8 +103,8 @@ class _MealDetailScreenState extends State<BeverageDetailScreen>
                         child: Column(
                           children: [
                             Container(
-                              padding: EdgeInsets.all(20),
-                              decoration: BoxDecoration(
+                              padding: const EdgeInsets.all(20),
+                              decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(10),
                                   topRight: Radius.circular(10),
@@ -119,9 +116,9 @@ class _MealDetailScreenState extends State<BeverageDetailScreen>
                                     flex: 4,
                                     child: Row(
                                       children: [
-                                        Icon(Icons.chat_outlined, size: 30),
+                                        const Icon(Icons.chat_outlined, size: 30),
                                         _sizedBox,
-                                        Text("350"),
+                                        const Text("350"),
                                       ],
                                     ),
                                   ),
@@ -130,9 +127,11 @@ class _MealDetailScreenState extends State<BeverageDetailScreen>
                                     child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Icon(Icons.star_border_rounded,
-                                              size: 40),
+                                        children: const [
+                                          Icon(
+                                            Icons.star_border_rounded,
+                                            size: 40,
+                                          ),
                                           Icon(Icons.bookmark_border, size: 30),
                                           Icon(Icons.share_outlined, size: 30),
                                         ]),
@@ -154,7 +153,7 @@ class _MealDetailScreenState extends State<BeverageDetailScreen>
                                 ),
                                 labelColor: Colors.white,
                                 unselectedLabelColor: Colors.black,
-                                tabs: [
+                                tabs: const [
                                   Tab(
                                     child: Text(
                                       "Ingredient",
@@ -187,7 +186,7 @@ class _MealDetailScreenState extends State<BeverageDetailScreen>
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
+                                      const Text(
                                         "Ingredient for",
                                         style: TextStyle(
                                           fontSize: 20,
@@ -196,7 +195,7 @@ class _MealDetailScreenState extends State<BeverageDetailScreen>
                                       ),
                                       Text(
                                         "$_servingAmount servings",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 14,
                                         ),
                                       ),
@@ -213,7 +212,8 @@ class _MealDetailScreenState extends State<BeverageDetailScreen>
                                       ),
                                       _sizedBox,
                                       _sizedBox,
-                                      Text("$_servingAmount", style: TextStyle(fontSize: 25)),
+                                      Text("$_servingAmount",
+                                          style: const TextStyle(fontSize: 25)),
                                       _sizedBox,
                                       _sizedBox,
                                       _servingButton(
@@ -233,7 +233,7 @@ class _MealDetailScreenState extends State<BeverageDetailScreen>
                                 ],
                               ),
                             ),
-                            Divider(),
+                            const Divider(),
                           ],
                         ),
                       ),
@@ -344,7 +344,7 @@ class _MealDetailScreenState extends State<BeverageDetailScreen>
                           ingredientMeasure.ingredient!.isNotEmpty
                       ? ingredientMeasure.ingredient!
                       : "NIL",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),

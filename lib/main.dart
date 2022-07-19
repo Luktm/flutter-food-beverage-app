@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: K.primaryColor,
         ),
-        home: MainMenuScreen(),
+        home: const MainMenuScreen(),
         onGenerateRoute: (RouteSettings settings) {
           if(settings.name  == MealDetailScreen.routeName) {
             final DetailArgument args = settings.arguments as DetailArgument;
@@ -59,8 +59,8 @@ class MyApp extends StatelessWidget {
           
         },
         routes: {
-          MainMenuScreen.routeName: (ctx) => MainMenuScreen(),
-          MealHomeScreen.routeName: (ctx) => MealHomeScreen(),
+          MainMenuScreen.routeName: (ctx) => const MainMenuScreen(),
+          MealHomeScreen.routeName: (ctx) => const MealHomeScreen(),
           BeverageHomeScreen.routeName: (ctx) => const BeverageHomeScreen(),
         },
       ),

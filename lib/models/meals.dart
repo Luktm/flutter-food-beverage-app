@@ -9,7 +9,7 @@ class Meals {
     if (json['meals'] != null) {
       meals = <Meal>[];
       json['meals'].forEach((v) {
-        meals!.add(new Meal.fromJson(v));
+        meals!.add(Meal.fromJson(v));
       });
     }
   }

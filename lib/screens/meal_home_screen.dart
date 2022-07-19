@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 class MealHomeScreen extends StatefulWidget {
   static const routeName = '/meal_home_screen';
 
-  MealHomeScreen({Key? key}) : super(key: key);
+  const MealHomeScreen({Key? key}) : super(key: key);
 
   @override
   State<MealHomeScreen> createState() => _MealHomeScreenState();
@@ -36,13 +36,13 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            DeliveringLocation(),
-            SizedBox(height: 30),
+            const DeliveringLocation(),
+            const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SearchInput(controller: controller),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SizedBox(
               height: 130,
               width: double.infinity,
@@ -56,7 +56,7 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
                   if (state is FNBCategoryFetched) {
                     return ListView(
                       scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.only(left: 20, right: 20),
+                      padding: const EdgeInsets.only(left: 20, right: 20),
                       children: List.generate(state.categories.length, (index) {
                         return Column(
                           children: [
@@ -76,7 +76,7 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
                               child: Column(
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(right: 15),
+                                    margin: const EdgeInsets.only(right: 15),
                                     clipBehavior: Clip.hardEdge,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
@@ -87,10 +87,10 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
                                       height: 100,
                                     ),
                                   ),
-                                  SizedBox(height: 10),
+                                  const SizedBox(height: 10),
                                   Text(
                                     state.categories[index].strCategory,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -102,7 +102,7 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
                       }),
                     );
                   }
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 },
@@ -165,7 +165,7 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
                                       Text(
                                         meal.strMeal ?? "",
                                         textAlign: TextAlign.left,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -176,11 +176,11 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
                                             color: K.primaryColor,
                                           ),
                                           Text('4.9', style: TextStyle(color: K.primaryColor)),
-                                          SizedBox(width: 5),
-                                          Text("(124 ratings)"),
-                                          SizedBox(width: 5),
+                                          const SizedBox(width: 5),
+                                          const Text("(124 ratings)"),
+                                          const SizedBox(width: 5),
                                           Text('•', style: TextStyle(color: K.primaryColor)),
-                                          SizedBox(width: 5),
+                                          const SizedBox(width: 5),
                                           Text(defaultCategoryName),
                                         ],
                                       )
@@ -193,7 +193,7 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
                         }),
                   );
                 }
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               },
             ),
           ],

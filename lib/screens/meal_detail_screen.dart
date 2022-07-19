@@ -4,7 +4,6 @@ import 'package:astro_test/cubit/fnb_detail_cubit.dart';
 import 'package:astro_test/models/meal.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:astro_test/models/ingredient_measure.dart';
-import 'package:astro_test/models/meals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -76,12 +75,12 @@ class _MealDetailScreenState extends State<MealDetailScreen>
                               left: 10,
                               child: Row(
                                 children: [
-                                  Icon(Icons.star_outlined),
-                                  Text("4.5"),
+                                  const Icon(Icons.star_outlined),
+                                  const Text("4.5"),
                                   _sizedBox,
-                                  Text("•"),
+                                  const Text("•"),
                                   _sizedBox,
-                                  Text("15:06"),
+                                  const Text("15:06"),
                                 ],
                               ),
                             ),
@@ -95,7 +94,7 @@ class _MealDetailScreenState extends State<MealDetailScreen>
                                     color: Theme.of(context).primaryColor,
                                     borderRadius: BorderRadius.circular(10),
                                   ),
-                                  child: Icon(Icons.play_arrow_rounded, size: 50),
+                                  child: const Icon(Icons.play_arrow_rounded, size: 50),
                                 ),
                               ),
                             ),
@@ -111,8 +110,8 @@ class _MealDetailScreenState extends State<MealDetailScreen>
                         child: Column(
                           children: [
                             Container(
-                              padding: EdgeInsets.all(20),
-                              decoration: BoxDecoration(
+                              padding: const EdgeInsets.all(20),
+                              decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(10),
                                   topRight: Radius.circular(10),
@@ -124,9 +123,9 @@ class _MealDetailScreenState extends State<MealDetailScreen>
                                     flex: 4,
                                     child: Row(
                                       children: [
-                                        Icon(Icons.chat_outlined, size: 30),
+                                        const Icon(Icons.chat_outlined, size: 30),
                                         _sizedBox,
-                                        Text("350"),
+                                        const Text("350"),
                                       ],
                                     ),
                                   ),
@@ -135,7 +134,7 @@ class _MealDetailScreenState extends State<MealDetailScreen>
                                     child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
-                                        children: [
+                                        children: const [
                                           Icon(Icons.star_border_rounded,
                                               size: 40),
                                           Icon(Icons.bookmark_border, size: 30),
@@ -145,9 +144,9 @@ class _MealDetailScreenState extends State<MealDetailScreen>
                                 ],
                               ),
                             ),
-                            Divider(),
+                            const Divider(),
                             Container(
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: TabBar(
                                 controller: _tabController,
                                 // give the indicator a decoration (color and border radius)
@@ -159,7 +158,7 @@ class _MealDetailScreenState extends State<MealDetailScreen>
                                 ),
                                 labelColor: Colors.white,
                                 unselectedLabelColor: Colors.black,
-                                tabs: [
+                                tabs: const [
                                   Tab(
                                     child: Text(
                                       "Ingredient",
@@ -192,7 +191,7 @@ class _MealDetailScreenState extends State<MealDetailScreen>
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
+                                      const Text(
                                         "Ingredient for",
                                         style: TextStyle(
                                           fontSize: 20,
@@ -201,7 +200,7 @@ class _MealDetailScreenState extends State<MealDetailScreen>
                                       ),
                                       Text(
                                         "$_servingAmount servings",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 14,
                                         ),
                                       ),
@@ -219,7 +218,7 @@ class _MealDetailScreenState extends State<MealDetailScreen>
                                       _sizedBox,
                                       _sizedBox,
                                       Text("$_servingAmount",
-                                          style: TextStyle(fontSize: 25)),
+                                          style: const TextStyle(fontSize: 25)),
                                       _sizedBox,
                                       _sizedBox,
                                       _servingButton(
@@ -239,7 +238,7 @@ class _MealDetailScreenState extends State<MealDetailScreen>
                                 ],
                               ),
                             ),
-                            Divider(),
+                            const Divider(),
                           ],
                         ),
                       ),
@@ -370,7 +369,7 @@ class _MealDetailScreenState extends State<MealDetailScreen>
                           ingredientMeasure.ingredient!.isNotEmpty
                       ? ingredientMeasure.ingredient!
                       : "NIL",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -401,7 +400,7 @@ class _MealDetailScreenState extends State<MealDetailScreen>
       Function()? onTap,
       required IconData icon}) {
     return SizedBox.fromSize(
-      size: Size(40, 40), // button width and height
+      size: const Size(40, 40), // button width and height
       child: ClipOval(
         child: Material(
           color: Theme.of(context).primaryColor, // button color

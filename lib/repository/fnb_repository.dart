@@ -4,7 +4,6 @@ import 'package:astro_test/models/drinks_category.dart';
 import 'package:astro_test/models/drinks.dart';
 import 'package:astro_test/models/meals_category.dart';
 import 'package:astro_test/models/meals.dart';
-import 'package:astro_test/models/meal.dart';
 import 'package:http/http.dart' as http;
 
 class FNBRepository {

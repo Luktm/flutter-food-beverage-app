@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 class MainMenuScreen extends StatefulWidget {
   static const routeName = "/main_menu_screen";
 
-  MainMenuScreen({Key? key}) : super(key: key);
+  const MainMenuScreen({Key? key}) : super(key: key);
 
   @override
   State<MainMenuScreen> createState() => _MainMenuScreenState();
@@ -35,14 +35,14 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 10),
+                  margin: const EdgeInsets.only(top: 10),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
                       children: [
                         Center(
                           child: SearchInput(
-                            key: Key("main_menu_screen_search_field"),
+                            key: const Key("main_menu_screen_search_field"),
                             controller: controller,
                           ),
                         )
@@ -50,7 +50,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 MainMenuButton(
                   title: "Food",
                   imgUrl: "https://i.picsum.photos/id/488/1772/1181.jpg?hmac=psl3qLyDefO6AYqU4TJQ8PNCjS8RdPiP_vRLB8WPVjY",
@@ -58,9 +58,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
                   onTap: () =>
                       Navigator.pushNamed(context, MealHomeScreen.routeName),
                 ),
-                SizedBox(
-                  height: 25,
-                ),
+                const SizedBox(height: 25),
                 MainMenuButton(
                   title: "Beverages",
                   imgUrl: "https://i.picsum.photos/id/431/5398/3599.jpg?hmac=bc325kFqsm626RGhgs-XwG_GFqd4x3VmXtramO12qL8",
