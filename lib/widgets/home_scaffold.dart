@@ -1,11 +1,11 @@
 import 'package:astro_test/utils/constant_util.dart';
 import 'package:flutter/material.dart';
 
-class GlobalScaffold extends StatelessWidget {
+class HomeScaffold extends StatelessWidget {
   final Widget body;
   final String? title;
 
-  const GlobalScaffold({Key? key, required this.body, this.title})
+  const HomeScaffold({Key? key, required this.body, this.title})
       : super(key: key);
 
   @override

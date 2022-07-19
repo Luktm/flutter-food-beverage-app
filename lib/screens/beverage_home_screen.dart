@@ -2,7 +2,7 @@ import 'package:astro_test/cubit/fnb_category_cubit.dart';
 import 'package:astro_test/cubit/popular_fnb_cubit.dart';
 import 'package:astro_test/utils/constant_util.dart';
 import 'package:astro_test/widgets/delivering_location.dart';
-import 'package:astro_test/widgets/global_scaffold.dart';
+import 'package:astro_test/widgets/home_scaffold.dart';
 import 'package:astro_test/widgets/search_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +29,7 @@ class _BeverageHomeScreenState extends State<BeverageHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GlobalScaffold(
+    return HomeScaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:astro_test/models/meal_argument.dart';
 import 'package:astro_test/screens/beverage_home_screen.dart';
 import 'package:astro_test/screens/meal_home_screen.dart';
-import 'package:astro_test/widgets/global_scaffold.dart';
+import 'package:astro_test/widgets/home_scaffold.dart';
 import 'package:astro_test/widgets/main_menu_button.dart';
 import 'package:astro_test/widgets/search_input.dart';
 import 'package:astro_test/widgets/square_painter.dart';
@@ -23,7 +23,7 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GlobalScaffold(
+    return HomeScaffold(
         title: "Menu",
         body: Stack(
           children: [

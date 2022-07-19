@@ -1,8 +1,10 @@
 import 'package:astro_test/cubit/fnb_category_cubit.dart';
 import 'package:astro_test/cubit/popular_fnb_cubit.dart';
+import 'package:astro_test/models/detail_argument.dart';
+import 'package:astro_test/screens/detail_screen.dart';
 import 'package:astro_test/utils/constant_util.dart';
 import 'package:astro_test/widgets/delivering_location.dart';
-import 'package:astro_test/widgets/global_scaffold.dart';
+import 'package:astro_test/widgets/home_scaffold.dart';
 import 'package:astro_test/widgets/search_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +32,7 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GlobalScaffold(
+    return HomeScaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -131,57 +133,62 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
                         itemBuilder: (BuildContext context, int index) {
                           final meal = state.popularMeals[index];
 
-                          return Column(
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: NetworkImage(
-                                      meal.strMealThumb,
+                          return GestureDetector(
+                            onTap: () => Navigator.pushNamed(context, DetailScreen.routeName, arguments: DetailArgument(
+                              id: meal.idMeal,
+                            )),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                        meal.strMealThumb,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 10,
-                                  bottom: 20,
-                                  left: 20,
-                                  right: 20,
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 10,
+                                    bottom: 20,
+                                    left: 20,
+                                    right: 20,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        meal.strMeal,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.star,
+                                            color: K.primaryColor,
+                                          ),
+                                          Text('4.9', style: TextStyle(color: K.primaryColor)),
+                                          SizedBox(width: 5),
+                                          Text("(124 ratings)"),
+                                          SizedBox(width: 5),
+                                          Text('•', style: TextStyle(color: K.primaryColor)),
+                                          SizedBox(width: 5),
+                                          Text(defaultCategoryName),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      meal.strMeal,
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: K.primaryColor,
-                                        ),
-                                        Text('4.9', style: TextStyle(color: K.primaryColor)),
-                                        SizedBox(width: 5),
-                                        Text("(124 ratings)"),
-                                        SizedBox(width: 5),
-                                        Text('•', style: TextStyle(color: K.primaryColor)),
-                                        SizedBox(width: 5),
-                                        Text(defaultCategoryName),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           );
                         }),
                   );
