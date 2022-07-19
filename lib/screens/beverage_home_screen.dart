@@ -49,20 +49,27 @@ class _BeverageHomeScreenState extends State<BeverageHomeScreen> {
               child: BlocBuilder<FNBCategoryCubit, FNBCategoryState>(
                 builder: (context, state) {
                   if (state is FNBCategoryFetched) {
+                  
                     return ListView(
                       scrollDirection: Axis.horizontal,
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       children: List.generate(state.beveragecategories.length,
                           (index) {
+                      var beverageCategory = state.beveragecategories[index];
                         return Column(
                           children: [
                             GestureDetector(
                               onTap: () {
-                                if(defaultCategoryName == state.beveragecategories[index].strCategory) {
+                                if(defaultCategoryName == beverageCategory.strCategory) {
                                   return;
                                 }
                                 
-                                defaultCategoryName = state.beveragecategories[index].strCategory.split("/").first.trim();
+                                 defaultCategoryName = state.beveragecategories[index].strCategory.split("/").first.trim();
+
+                                 if(defaultCategoryName == "Ordinary Drink") {
+                                  defaultCategoryName = "";
+                                 }
+                                
                                 context.read<PopularFNBCubit>().fetchBeverageByCategoryName(name: defaultCategoryName);
                               },
                               child: Container(
