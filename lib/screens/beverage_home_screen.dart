@@ -1,5 +1,8 @@
 import 'package:astro_test/cubit/fnb_category_cubit.dart';
 import 'package:astro_test/cubit/popular_fnb_cubit.dart';
+import 'package:astro_test/models/detail_argument.dart';
+import 'package:astro_test/screens/beverage_detail_screen.dart';
+import 'package:astro_test/screens/meal_detail_screen.dart';
 import 'package:astro_test/utils/constant_util.dart';
 import 'package:astro_test/widgets/delivering_location.dart';
 import 'package:astro_test/widgets/home_scaffold.dart';
@@ -114,61 +117,66 @@ class _BeverageHomeScreenState extends State<BeverageHomeScreen> {
                         itemCount: state.popularBeverages.length,
                         itemBuilder: (BuildContext context, int index) {
                           final drink = state.popularBeverages[index];
-                          return Column(
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: 200,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: NetworkImage(
-                                      drink.strDrinkThumb ?? "",
+                          return GestureDetector(
+                             onTap: () => Navigator.pushNamed(context, BeverageDetailScreen.routeName, arguments: DetailArgument(
+                              id: drink.idDrink!,
+                            )),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                        drink.strDrinkThumb ?? "",
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 10,
-                                  bottom: 20,
-                                  left: 20,
-                                  right: 20,
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 10,
+                                    bottom: 20,
+                                    left: 20,
+                                    right: 20,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        drink.strDrink ?? "",
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Icon(
+                                            Icons.star,
+                                            color: K.primaryColor,
+                                          ),
+                                          Text('4.9',
+                                              style: TextStyle(
+                                                  color: K.primaryColor)),
+                                          SizedBox(width: 5),
+                                          Text("(124 ratings)"),
+                                          SizedBox(width: 5),
+                                          Text('•',
+                                              style: TextStyle(
+                                                  color: K.primaryColor)),
+                                          SizedBox(width: 5),
+                                          Text(defaultCategoryName),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      drink.strDrink ?? "",
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: K.primaryColor,
-                                        ),
-                                        Text('4.9',
-                                            style: TextStyle(
-                                                color: K.primaryColor)),
-                                        SizedBox(width: 5),
-                                        Text("(124 ratings)"),
-                                        SizedBox(width: 5),
-                                        Text('•',
-                                            style: TextStyle(
-                                                color: K.primaryColor)),
-                                        SizedBox(width: 5),
-                                        Text(defaultCategoryName),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           );
                         }),
                   );

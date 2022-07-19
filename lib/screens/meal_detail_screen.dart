@@ -1,21 +1,23 @@
+import 'dart:io';
+
 import 'package:astro_test/cubit/fnb_detail_cubit.dart';
-import 'package:astro_test/models/detail_argument.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:astro_test/models/ingredient_measure.dart';
 import 'package:astro_test/models/meal_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class DetailScreen extends StatefulWidget {
-  static const routeName = "/detail_screen";
+class MealDetailScreen extends StatefulWidget {
+  static const routeName = "/meal_detail_screen";
   final String id;
 
-  const DetailScreen({Key? key, required this.id}) : super(key: key);
+  const MealDetailScreen({Key? key, required this.id}) : super(key: key);
 
   @override
-  State<DetailScreen> createState() => _DetailScreenState();
+  State<MealDetailScreen> createState() => _MealDetailScreenState();
 }
 
-class _DetailScreenState extends State<DetailScreen>
+class _MealDetailScreenState extends State<MealDetailScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int _servingAmount = 1;
@@ -36,7 +38,6 @@ class _DetailScreenState extends State<DetailScreen>
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments as DetailArgument?;
     SizedBox _sizedBox = const SizedBox(width: 5);
 
     return Scaffold(
@@ -86,12 +87,15 @@ class _DetailScreenState extends State<DetailScreen>
                             Positioned(
                               top: 150,
                               left: 10,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context).primaryColor,
-                                  borderRadius: BorderRadius.circular(10),
+                              child: GestureDetector(
+                                onTap: () => _launchURL(url: mealDetail.strYoutube),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).primaryColor,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Icon(Icons.play_arrow_rounded, size: 50),
                                 ),
-                                child: Icon(Icons.play_arrow_rounded, size: 50),
                               ),
                             ),
                           ],
@@ -213,7 +217,8 @@ class _DetailScreenState extends State<DetailScreen>
                                       ),
                                       _sizedBox,
                                       _sizedBox,
-                                      Text('', style: TextStyle(fontSize: 25)),
+                                      Text("$_servingAmount",
+                                          style: TextStyle(fontSize: 25)),
                                       _sizedBox,
                                       _sizedBox,
                                       _servingButton(
@@ -412,5 +417,28 @@ class _DetailScreenState extends State<DetailScreen>
         ),
       ),
     );
+  }
+
+  _launchURL({String? url}) async {
+    if (url != null) {
+      final parsedUrl = Uri.parse(url);
+      if (Platform.isIOS) {
+        if (await canLaunchUrl(parsedUrl)) {
+          await launchUrl(parsedUrl);
+        } else {
+          if (await canLaunchUrl(parsedUrl)) {
+            await launchUrl(parsedUrl);
+          } else {
+            throw 'Could not launch $parsedUrl';
+          }
+        }
+      } else {
+        if (await canLaunchUrl(parsedUrl)) {
+          await launchUrl(parsedUrl);
+        } else {
+          throw 'Could not launch $url';
+        }
+      }
+    }
   }
 }

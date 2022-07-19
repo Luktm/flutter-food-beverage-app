@@ -8,10 +8,10 @@ class FnbDetailInitial extends FNBDetailState {}
 class FnbDetailFetching extends FNBDetailState {}
 
 class FNBDetailFetched extends FNBDetailState {
-
   final MealDetail mealDetail;
+  final DrinkDetail drinkDetail;
 
-  FNBDetailFetched({required this.mealDetail});
+  FNBDetailFetched({required this.mealDetail, required this.drinkDetail});
   
   @override
   List<Object> get props => [];

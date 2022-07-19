@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:astro_test/models/beverage_category.dart';
+import 'package:astro_test/models/drink_detail.dart';
 import 'package:astro_test/models/food_category.dart';
 import 'package:astro_test/models/meal_detail.dart';
 import 'package:astro_test/models/popular_beverage.dart';
@@ -83,6 +84,21 @@ class FNBRepository {
       }
       
       return MealDetail.fromJson(jsonDecode(response.body));
+    } catch(error) {
+      rethrow;
+    }
+  }
+
+  Future<DrinkDetail> fetchDrinkDetailById({required String id}) async{
+    try {
+      final drinkDetailUri = Uri.parse("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id);
+      final response = await http.get(drinkDetailUri);
+
+      if(response.statusCode != 200) {
+        throw "Something went wrong";
+      }
+      
+      return DrinkDetail.fromJson(jsonDecode(response.body));
     } catch(error) {
       rethrow;
     }

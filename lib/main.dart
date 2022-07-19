@@ -3,8 +3,9 @@ import 'package:astro_test/cubit/fnb_detail_cubit.dart';
 import 'package:astro_test/cubit/popular_fnb_cubit.dart';
 import 'package:astro_test/models/detail_argument.dart';
 import 'package:astro_test/repository/fnb_repository.dart';
+import 'package:astro_test/screens/beverage_detail_screen.dart';
 import 'package:astro_test/screens/beverage_home_screen.dart';
-import 'package:astro_test/screens/detail_screen.dart';
+import 'package:astro_test/screens/meal_detail_screen.dart';
 import 'package:astro_test/screens/meal_home_screen.dart';
 import 'package:astro_test/utils/constant_util.dart';
 import 'package:flutter/material.dart';
@@ -41,11 +42,18 @@ class MyApp extends StatelessWidget {
         ),
         home: MainMenuScreen(),
         onGenerateRoute: (RouteSettings settings) {
-          if(settings.name  == DetailScreen.routeName) {
+          if(settings.name  == MealDetailScreen.routeName) {
             final DetailArgument args = settings.arguments as DetailArgument;
             
             return MaterialPageRoute(builder: (ctx) {
-              return DetailScreen(id: args.id);
+              return MealDetailScreen(id: args.id);
+            });
+          }
+
+          if(settings.name  == BeverageDetailScreen.routeName) {
+            final DetailArgument args = settings.arguments as DetailArgument;
+            return MaterialPageRoute(builder: (ctx) {
+              return BeverageDetailScreen(id: args.id);
             });
           }
           
@@ -54,7 +62,6 @@ class MyApp extends StatelessWidget {
           MainMenuScreen.routeName: (ctx) => MainMenuScreen(),
           MealHomeScreen.routeName: (ctx) => MealHomeScreen(),
           BeverageHomeScreen.routeName: (ctx) => const BeverageHomeScreen(),
-          // DetailScreen.routeName: (ctx) => DetailScreen(),
         },
       ),
     );

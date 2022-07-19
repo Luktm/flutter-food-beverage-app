@@ -1,7 +1,7 @@
 import 'package:astro_test/cubit/fnb_category_cubit.dart';
 import 'package:astro_test/cubit/popular_fnb_cubit.dart';
 import 'package:astro_test/models/detail_argument.dart';
-import 'package:astro_test/screens/detail_screen.dart';
+import 'package:astro_test/screens/meal_detail_screen.dart';
 import 'package:astro_test/utils/constant_util.dart';
 import 'package:astro_test/widgets/delivering_location.dart';
 import 'package:astro_test/widgets/home_scaffold.dart';
@@ -134,7 +134,7 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
                           final meal = state.popularMeals[index];
 
                           return GestureDetector(
-                            onTap: () => Navigator.pushNamed(context, DetailScreen.routeName, arguments: DetailArgument(
+                            onTap: () => Navigator.pushNamed(context, MealDetailScreen.routeName, arguments: DetailArgument(
                               id: meal.idMeal,
                             )),
                             child: Column(

@@ -1,91 +1,97 @@
-class MealDetail {
-  List<Meals>? meals;
+class DrinkDetail {
+  List<Drinks>? drinks;
 
-  MealDetail({this.meals});
+  DrinkDetail({this.drinks});
 
-  MealDetail.fromJson(Map<String, dynamic> json) {
-    if (json['meals'] != null) {
-      meals = <Meals>[];
-      json['meals'].forEach((v) {
-        meals!.add(new Meals.fromJson(v));
+  DrinkDetail.fromJson(Map<String, dynamic> json) {
+    if (json['drinks'] != null) {
+      drinks = <Drinks>[];
+      json['drinks'].forEach((v) {
+        drinks!.add(new Drinks.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.meals != null) {
-      data['meals'] = this.meals!.map((v) => v.toJson()).toList();
+    if (this.drinks != null) {
+      data['drinks'] = this.drinks!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class Meals {
-  String? idMeal;
-  String? strMeal;
+class Drinks {
+  String? idDrink;
+  String? strDrink;
   Null? strDrinkAlternate;
+  Null? strTags;
+  Null? strVideo;
   String? strCategory;
-  String? strArea;
+  Null? strIBA;
+  String? strAlcoholic;
+  String? strGlass;
   String? strInstructions;
-  String? strMealThumb;
-  String? strTags;
-  String? strYoutube;
+  Null? strInstructionsES;
+  String? strInstructionsDE;
+  Null? strInstructionsFR;
+  String? strInstructionsIT;
+  Null? strInstructionsZHHANS;
+  Null? strInstructionsZHHANT;
+  String? strDrinkThumb;
   String? strIngredient1;
   String? strIngredient2;
   String? strIngredient3;
-  String? strIngredient4;
-  String? strIngredient5;
-  String? strIngredient6;
-  String? strIngredient7;
-  String? strIngredient8;
-  String? strIngredient9;
-  String? strIngredient10;
-  String? strIngredient11;
-  String? strIngredient12;
-  String? strIngredient13;
-  String? strIngredient14;
-  String? strIngredient15;
-  String? strIngredient16;
-  String? strIngredient17;
-  String? strIngredient18;
-  String? strIngredient19;
-  String? strIngredient20;
+  Null? strIngredient4;
+  Null? strIngredient5;
+  Null? strIngredient6;
+  Null? strIngredient7;
+  Null? strIngredient8;
+  Null? strIngredient9;
+  Null? strIngredient10;
+  Null? strIngredient11;
+  Null? strIngredient12;
+  Null? strIngredient13;
+  Null? strIngredient14;
+  Null? strIngredient15;
   String? strMeasure1;
-  String? strMeasure2;
-  String? strMeasure3;
-  String? strMeasure4;
-  String? strMeasure5;
-  String? strMeasure6;
-  String? strMeasure7;
-  String? strMeasure8;
-  String? strMeasure9;
-  String? strMeasure10;
-  String? strMeasure11;
-  String? strMeasure12;
-  String? strMeasure13;
-  String? strMeasure14;
-  String? strMeasure15;
-  String? strMeasure16;
-  String? strMeasure17;
-  String? strMeasure18;
-  String? strMeasure19;
-  String? strMeasure20;
-  String? strSource;
+  Null? strMeasure2;
+  Null? strMeasure3;
+  Null? strMeasure4;
+  Null? strMeasure5;
+  Null? strMeasure6;
+  Null? strMeasure7;
+  Null? strMeasure8;
+  Null? strMeasure9;
+  Null? strMeasure10;
+  Null? strMeasure11;
+  Null? strMeasure12;
+  Null? strMeasure13;
+  Null? strMeasure14;
+  Null? strMeasure15;
   Null? strImageSource;
-  Null? strCreativeCommonsConfirmed;
-  Null? dateModified;
+  Null? strImageAttribution;
+  String? strCreativeCommonsConfirmed;
+  String? dateModified;
 
-  Meals(
-      {this.idMeal,
-      this.strMeal,
+  Drinks(
+      {this.idDrink,
+      this.strDrink,
       this.strDrinkAlternate,
-      this.strCategory,
-      this.strArea,
-      this.strInstructions,
-      this.strMealThumb,
       this.strTags,
-      this.strYoutube,
+      this.strVideo,
+      this.strCategory,
+      this.strIBA,
+      this.strAlcoholic,
+      this.strGlass,
+      this.strInstructions,
+      this.strInstructionsES,
+      this.strInstructionsDE,
+      this.strInstructionsFR,
+      this.strInstructionsIT,
+      this.strInstructionsZHHANS,
+      this.strInstructionsZHHANT,
+      this.strDrinkThumb,
       this.strIngredient1,
       this.strIngredient2,
       this.strIngredient3,
@@ -101,11 +107,6 @@ class Meals {
       this.strIngredient13,
       this.strIngredient14,
       this.strIngredient15,
-      this.strIngredient16,
-      this.strIngredient17,
-      this.strIngredient18,
-      this.strIngredient19,
-      this.strIngredient20,
       this.strMeasure1,
       this.strMeasure2,
       this.strMeasure3,
@@ -121,26 +122,29 @@ class Meals {
       this.strMeasure13,
       this.strMeasure14,
       this.strMeasure15,
-      this.strMeasure16,
-      this.strMeasure17,
-      this.strMeasure18,
-      this.strMeasure19,
-      this.strMeasure20,
-      this.strSource,
       this.strImageSource,
+      this.strImageAttribution,
       this.strCreativeCommonsConfirmed,
       this.dateModified});
 
-  Meals.fromJson(Map<String, dynamic> json) {
-    idMeal = json['idMeal'];
-    strMeal = json['strMeal'];
+  Drinks.fromJson(Map<String, dynamic> json) {
+    idDrink = json['idDrink'];
+    strDrink = json['strDrink'];
     strDrinkAlternate = json['strDrinkAlternate'];
-    strCategory = json['strCategory'];
-    strArea = json['strArea'];
-    strInstructions = json['strInstructions'];
-    strMealThumb = json['strMealThumb'];
     strTags = json['strTags'];
-    strYoutube = json['strYoutube'];
+    strVideo = json['strVideo'];
+    strCategory = json['strCategory'];
+    strIBA = json['strIBA'];
+    strAlcoholic = json['strAlcoholic'];
+    strGlass = json['strGlass'];
+    strInstructions = json['strInstructions'];
+    strInstructionsES = json['strInstructionsES'];
+    strInstructionsDE = json['strInstructionsDE'];
+    strInstructionsFR = json['strInstructionsFR'];
+    strInstructionsIT = json['strInstructionsIT'];
+    strInstructionsZHHANS = json['strInstructionsZH-HANS'];
+    strInstructionsZHHANT = json['strInstructionsZH-HANT'];
+    strDrinkThumb = json['strDrinkThumb'];
     strIngredient1 = json['strIngredient1'];
     strIngredient2 = json['strIngredient2'];
     strIngredient3 = json['strIngredient3'];
@@ -156,11 +160,6 @@ class Meals {
     strIngredient13 = json['strIngredient13'];
     strIngredient14 = json['strIngredient14'];
     strIngredient15 = json['strIngredient15'];
-    strIngredient16 = json['strIngredient16'];
-    strIngredient17 = json['strIngredient17'];
-    strIngredient18 = json['strIngredient18'];
-    strIngredient19 = json['strIngredient19'];
-    strIngredient20 = json['strIngredient20'];
     strMeasure1 = json['strMeasure1'];
     strMeasure2 = json['strMeasure2'];
     strMeasure3 = json['strMeasure3'];
@@ -176,28 +175,31 @@ class Meals {
     strMeasure13 = json['strMeasure13'];
     strMeasure14 = json['strMeasure14'];
     strMeasure15 = json['strMeasure15'];
-    strMeasure16 = json['strMeasure16'];
-    strMeasure17 = json['strMeasure17'];
-    strMeasure18 = json['strMeasure18'];
-    strMeasure19 = json['strMeasure19'];
-    strMeasure20 = json['strMeasure20'];
-    strSource = json['strSource'];
     strImageSource = json['strImageSource'];
+    strImageAttribution = json['strImageAttribution'];
     strCreativeCommonsConfirmed = json['strCreativeCommonsConfirmed'];
     dateModified = json['dateModified'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['idMeal'] = this.idMeal;
-    data['strMeal'] = this.strMeal;
+    data['idDrink'] = this.idDrink;
+    data['strDrink'] = this.strDrink;
     data['strDrinkAlternate'] = this.strDrinkAlternate;
-    data['strCategory'] = this.strCategory;
-    data['strArea'] = this.strArea;
-    data['strInstructions'] = this.strInstructions;
-    data['strMealThumb'] = this.strMealThumb;
     data['strTags'] = this.strTags;
-    data['strYoutube'] = this.strYoutube;
+    data['strVideo'] = this.strVideo;
+    data['strCategory'] = this.strCategory;
+    data['strIBA'] = this.strIBA;
+    data['strAlcoholic'] = this.strAlcoholic;
+    data['strGlass'] = this.strGlass;
+    data['strInstructions'] = this.strInstructions;
+    data['strInstructionsES'] = this.strInstructionsES;
+    data['strInstructionsDE'] = this.strInstructionsDE;
+    data['strInstructionsFR'] = this.strInstructionsFR;
+    data['strInstructionsIT'] = this.strInstructionsIT;
+    data['strInstructionsZH-HANS'] = this.strInstructionsZHHANS;
+    data['strInstructionsZH-HANT'] = this.strInstructionsZHHANT;
+    data['strDrinkThumb'] = this.strDrinkThumb;
     data['strIngredient1'] = this.strIngredient1;
     data['strIngredient2'] = this.strIngredient2;
     data['strIngredient3'] = this.strIngredient3;
@@ -213,11 +215,6 @@ class Meals {
     data['strIngredient13'] = this.strIngredient13;
     data['strIngredient14'] = this.strIngredient14;
     data['strIngredient15'] = this.strIngredient15;
-    data['strIngredient16'] = this.strIngredient16;
-    data['strIngredient17'] = this.strIngredient17;
-    data['strIngredient18'] = this.strIngredient18;
-    data['strIngredient19'] = this.strIngredient19;
-    data['strIngredient20'] = this.strIngredient20;
     data['strMeasure1'] = this.strMeasure1;
     data['strMeasure2'] = this.strMeasure2;
     data['strMeasure3'] = this.strMeasure3;
@@ -233,13 +230,8 @@ class Meals {
     data['strMeasure13'] = this.strMeasure13;
     data['strMeasure14'] = this.strMeasure14;
     data['strMeasure15'] = this.strMeasure15;
-    data['strMeasure16'] = this.strMeasure16;
-    data['strMeasure17'] = this.strMeasure17;
-    data['strMeasure18'] = this.strMeasure18;
-    data['strMeasure19'] = this.strMeasure19;
-    data['strMeasure20'] = this.strMeasure20;
-    data['strSource'] = this.strSource;
     data['strImageSource'] = this.strImageSource;
+    data['strImageAttribution'] = this.strImageAttribution;
     data['strCreativeCommonsConfirmed'] = this.strCreativeCommonsConfirmed;
     data['dateModified'] = this.dateModified;
     return data;

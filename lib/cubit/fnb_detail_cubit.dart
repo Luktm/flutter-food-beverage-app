@@ -1,3 +1,4 @@
+import 'package:astro_test/models/drink_detail.dart';
 import 'package:astro_test/models/meal_detail.dart';
 import 'package:astro_test/repository/fnb_repository.dart';
 import 'package:bloc/bloc.dart';
@@ -13,7 +14,17 @@ class FNBDetailCubit extends Cubit<FNBDetailState> {
     try {
       emit(FnbDetailFetching());
       final MealDetail mealDetail = await fnbRepository.fetchMealDetailById(id: id);
-      emit(FNBDetailFetched(mealDetail: mealDetail));
+      emit(FNBDetailFetched(mealDetail: mealDetail, drinkDetail: DrinkDetail(drinks: [])));
+    } catch(error) {
+      emit(FNBDetailFailedFetch(message: error.toString()));
+    }
+  }
+
+  Future<void> fetchDrinkDetailById({ required String id }) async{
+    try {
+      emit(FnbDetailFetching());
+      final DrinkDetail drinkDetail = await fnbRepository.fetchDrinkDetailById(id: id);
+      emit(FNBDetailFetched(mealDetail: MealDetail(meals: []), drinkDetail: drinkDetail));
     } catch(error) {
       emit(FNBDetailFailedFetch(message: error.toString()));
     }
