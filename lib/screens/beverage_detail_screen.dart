@@ -1,6 +1,7 @@
 import 'package:astro_test/cubit/fnb_detail_cubit.dart';
 import 'package:astro_test/models/detail_argument.dart';
 import 'package:astro_test/models/drink_detail.dart';
+import 'package:astro_test/models/drinks.dart';
 import 'package:astro_test/models/ingredient_measure.dart';
 import 'package:astro_test/models/meal_detail.dart';
 import 'package:flutter/material.dart';
