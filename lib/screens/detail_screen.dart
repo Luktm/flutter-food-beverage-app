@@ -66,7 +66,7 @@ class _DetailScreenState extends State<DetailScreen>
                               mealDetail.strMealThumb ??
                                   "https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png",
                               fit: BoxFit.cover,
-                              colorBlendMode: BlendMode.darken,
+                              colorBlendMode: BlendMode.multiply,
                               color: Colors.white,
                             ),
                             Positioned(
