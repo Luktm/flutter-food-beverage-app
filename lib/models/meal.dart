@@ -1,27 +1,4 @@
-class MealDetail {
-  List<Meals>? meals;
-
-  MealDetail({this.meals});
-
-  MealDetail.fromJson(Map<String, dynamic> json) {
-    if (json['meals'] != null) {
-      meals = <Meals>[];
-      json['meals'].forEach((v) {
-        meals!.add(new Meals.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.meals != null) {
-      data['meals'] = this.meals!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class Meals {
+class Meal {
   String? idMeal;
   String? strMeal;
   Null? strDrinkAlternate;
@@ -76,7 +53,7 @@ class Meals {
   Null? strCreativeCommonsConfirmed;
   Null? dateModified;
 
-  Meals(
+  Meal(
       {this.idMeal,
       this.strMeal,
       this.strDrinkAlternate,
@@ -131,7 +108,7 @@ class Meals {
       this.strCreativeCommonsConfirmed,
       this.dateModified});
 
-  Meals.fromJson(Map<String, dynamic> json) {
+  Meal.fromJson(Map<String, dynamic> json) {
     idMeal = json['idMeal'];
     strMeal = json['strMeal'];
     strDrinkAlternate = json['strDrinkAlternate'];

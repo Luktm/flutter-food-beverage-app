@@ -1,9 +1,9 @@
 import 'package:astro_test/cubit/fnb_detail_cubit.dart';
 import 'package:astro_test/models/detail_argument.dart';
-import 'package:astro_test/models/drink_detail.dart';
 import 'package:astro_test/models/drinks.dart';
+import 'package:astro_test/models/drink.dart';
 import 'package:astro_test/models/ingredient_measure.dart';
-import 'package:astro_test/models/meal_detail.dart';
+import 'package:astro_test/models/meals.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,7 +45,7 @@ class _MealDetailScreenState extends State<BeverageDetailScreen>
       body: BlocBuilder<FNBDetailCubit, FNBDetailState>(
         builder: (context, state) {
           if (state is FNBDetailFetched) {
-            final Drinks drinkDetail = state.drinkDetail.drinks![0];
+            final Drink drinkDetail = state.drinkDetail.drinks![0];
             List<IngredientMeasure> populateIngredient =
                 _populateIngredientMeasure(drinkDetail);
             return Builder(builder: (context) {
@@ -262,7 +262,7 @@ class _MealDetailScreenState extends State<BeverageDetailScreen>
     );
   }
 
-  List<IngredientMeasure> _populateIngredientMeasure(Drinks mealDetail) {
+  List<IngredientMeasure> _populateIngredientMeasure(Drink mealDetail) {
     return [
       IngredientMeasure(
         ingredient: mealDetail.strIngredient1,

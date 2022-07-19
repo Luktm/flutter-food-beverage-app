@@ -64,7 +64,7 @@ class _BeverageHomeScreenState extends State<BeverageHomeScreen> {
                                   return;
                                 }
                                 
-                                 defaultCategoryName = state.beveragecategories[index].strCategory.split("/").first.trim();
+                                 defaultCategoryName = beverageCategory.strCategory!.split("/").first.trim();
 
                                  if(defaultCategoryName == "Ordinary Drink") {
                                   defaultCategoryName = "";
@@ -80,7 +80,7 @@ class _BeverageHomeScreenState extends State<BeverageHomeScreen> {
                                     borderRadius: BorderRadius.circular(10),
                                     color: Colors.black12),
                                 child: Text(
-                                  state.beveragecategories[index].strCategory,
+                                 beverageCategory.strCategory ?? "",
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                   ),

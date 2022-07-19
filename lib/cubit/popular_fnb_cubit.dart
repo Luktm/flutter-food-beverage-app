@@ -1,7 +1,8 @@
-import 'package:astro_test/models/beverage_category.dart';
+import 'package:astro_test/models/drinks_category.dart';
+import 'package:astro_test/models/drink.dart';
 import 'package:astro_test/models/drinks.dart';
-import 'package:astro_test/models/popular_beverage.dart';
-import 'package:astro_test/models/popular_meal.dart';
+import 'package:astro_test/models/meal.dart';
+import 'package:astro_test/models/meals.dart';
 import 'package:astro_test/repository/fnb_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
@@ -15,8 +16,8 @@ class PopularFNBCubit extends Cubit<PopularFNBState> {
   void fetchMealsByCategoryName({required String name}) async {
     try {
       emit(PopularFNBFetching());
-      final PopularMeal popularMealItems = await fnbRepository.fetchMealByCategoryName(name: name);
-      emit(PopularFNBFetched(popularMeals: popularMealItems.meals, popularBeverages: const[]));
+      final Meals popularMealItems = await fnbRepository.fetchMealByCategoryName(name: name);
+      emit(PopularFNBFetched(popularMeals: popularMealItems.meals ?? const [], popularBeverages: const[]));
     } catch(error) {
       emit(PopularFNBFailedFetch(message: error.toString()));
     }
@@ -25,7 +26,7 @@ class PopularFNBCubit extends Cubit<PopularFNBState> {
   void fetchBeverageByCategoryName({required String name}) async{
     try {
       emit(PopularFNBFetching());
-      final PopularBeverage popularBeverageItems = await fnbRepository.fetchBeverageByCategoryName(name: name);
+      final Drinks popularBeverageItems = await fnbRepository.fetchBeverageByCategoryName(name: name);
       emit(PopularFNBFetched(popularMeals: const[], popularBeverages: popularBeverageItems.drinks ?? []));
     } catch(error) {
       emit(PopularFNBFailedFetch(message: error.toString()));

@@ -1,5 +1,6 @@
-import 'package:astro_test/models/beverage_category.dart';
-import 'package:astro_test/models/food_category.dart';
+import 'package:astro_test/models/drinks_category.dart';
+import 'package:astro_test/models/drink.dart';
+import 'package:astro_test/models/meals_category.dart';
 import 'package:astro_test/repository/fnb_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
@@ -14,7 +15,7 @@ class FNBCategoryCubit extends Cubit<FNBCategoryState> {
   void fetchMealCategories() async {
     try {
       emit(FNBCategoryFetching());
-      final FoodCategory foodCategoryItems = await fnbRepository.fetchMealCategory();
+      final MealsCategory foodCategoryItems = await fnbRepository.fetchMealCategory();
       emit(FNBCategoryFetched(categories: foodCategoryItems.categories, beveragecategories: const[]));
     } catch (error) {
       emit(FNBCategoryFailedFetch(message: error.toString()));
@@ -24,7 +25,7 @@ class FNBCategoryCubit extends Cubit<FNBCategoryState> {
   void fetchBeverageCategories() async{
     try {
       emit(FNBCategoryFetching());
-      final BeverageCategory beverageCategoryItems = await fnbRepository.fetchBeverageCategory();
+      final DrinksCategory beverageCategoryItems = await fnbRepository.fetchBeverageCategory();
       emit(FNBCategoryFetched(categories: const [], beveragecategories: beverageCategoryItems.drinks));
     } catch (error) {
       emit(FNBCategoryFailedFetch(message: error.toString()));

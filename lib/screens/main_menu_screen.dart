@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:astro_test/models/meal_argument.dart';
 import 'package:astro_test/screens/beverage_home_screen.dart';
 import 'package:astro_test/screens/meal_home_screen.dart';
 import 'package:astro_test/widgets/home_scaffold.dart';

@@ -135,7 +135,7 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
 
                           return GestureDetector(
                             onTap: () => Navigator.pushNamed(context, MealDetailScreen.routeName, arguments: DetailArgument(
-                              id: meal.idMeal,
+                              id: meal.idMeal!,
                             )),
                             child: Column(
                               children: [
@@ -146,7 +146,7 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: NetworkImage(
-                                        meal.strMealThumb,
+                                        meal.strMealThumb ?? "https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png",
                                       ),
                                     ),
                                   ),
@@ -163,7 +163,7 @@ class _MealHomeScreenState extends State<MealHomeScreen> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        meal.strMeal,
+                                        meal.strMeal ?? "",
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
                                             fontSize: 18,

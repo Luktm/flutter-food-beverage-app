@@ -8,8 +8,8 @@ class FnbDetailInitial extends FNBDetailState {}
 class FnbDetailFetching extends FNBDetailState {}
 
 class FNBDetailFetched extends FNBDetailState {
-  final MealDetail mealDetail;
-  final DrinkDetail drinkDetail;
+  final Meals mealDetail;
+  final Drinks drinkDetail;
 
   FNBDetailFetched({required this.mealDetail, required this.drinkDetail});
   

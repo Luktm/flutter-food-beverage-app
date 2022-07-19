@@ -1,16 +1,15 @@
 import 'dart:convert';
 
-import 'package:astro_test/models/beverage_category.dart';
-import 'package:astro_test/models/drink_detail.dart';
-import 'package:astro_test/models/food_category.dart';
-import 'package:astro_test/models/meal_detail.dart';
-import 'package:astro_test/models/popular_beverage.dart';
-import 'package:astro_test/models/popular_meal.dart';
+import 'package:astro_test/models/drinks_category.dart';
+import 'package:astro_test/models/drinks.dart';
+import 'package:astro_test/models/meals_category.dart';
+import 'package:astro_test/models/meals.dart';
+import 'package:astro_test/models/meal.dart';
 import 'package:http/http.dart' as http;
 
 class FNBRepository {
 
-  Future<FoodCategory> fetchMealCategory() async {
+  Future<MealsCategory> fetchMealCategory() async {
       try {
         final mealCategoryUri = Uri.parse("https://www.themealdb.com/api/json/v1/1/categories.php");
         final response  = await http.get(mealCategoryUri);
@@ -27,7 +26,7 @@ class FNBRepository {
       }
   }
 
-  Future<PopularMeal> fetchMealByCategoryName({required String name}) async{
+  Future<Meals> fetchMealByCategoryName({required String name}) async{
     try {
       final mealByNameUri = Uri.parse("https://www.themealdb.com/api/json/v1/1/filter.php?c=" + name);
       final response = await http.get(mealByNameUri);
@@ -36,7 +35,7 @@ class FNBRepository {
         throw "Something went wrong";
       }
 
-      return popularMealItemsFromJson(response.body);
+      return Meals.fromJson(jsonDecode(response.body));
 
     } catch(error) {
       rethrow;
@@ -44,7 +43,7 @@ class FNBRepository {
   }
 
 
-  Future<BeverageCategory> fetchBeverageCategory() async{
+  Future<DrinksCategory> fetchBeverageCategory() async{
      try {
       final beverageCategoryUri = Uri.parse("https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list");
       final response = await http.get(beverageCategoryUri);
@@ -59,7 +58,7 @@ class FNBRepository {
     }
   }
 
-  Future<PopularBeverage> fetchBeverageByCategoryName({required String name}) async{
+  Future<Drinks> fetchBeverageByCategoryName({required String name}) async{
     try {
       final beverageByNameUri = Uri.parse("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=$name");
       final response = await http.get(beverageByNameUri);
@@ -68,13 +67,13 @@ class FNBRepository {
         throw "Something went wrong";
       }
       
-      return PopularBeverage.fromJson(jsonDecode(response.body));
+      return Drinks.fromJson(jsonDecode(response.body));
     } catch(error) {
       rethrow;
     }
   }
   
-  Future<MealDetail> fetchMealDetailById({required String id}) async{
+  Future<Meals> fetchMealDetailById({required String id}) async{
     try {
       final mealDetailUri = Uri.parse("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id);
       final response = await http.get(mealDetailUri);
@@ -83,13 +82,13 @@ class FNBRepository {
         throw "Something went wrong";
       }
       
-      return MealDetail.fromJson(jsonDecode(response.body));
+      return Meals.fromJson(jsonDecode(response.body));
     } catch(error) {
       rethrow;
     }
   }
 
-  Future<DrinkDetail> fetchDrinkDetailById({required String id}) async{
+  Future<Drinks> fetchDrinkDetailById({required String id}) async{
     try {
       final drinkDetailUri = Uri.parse("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id);
       final response = await http.get(drinkDetailUri);
@@ -98,7 +97,7 @@ class FNBRepository {
         throw "Something went wrong";
       }
       
-      return DrinkDetail.fromJson(jsonDecode(response.body));
+      return Drinks.fromJson(jsonDecode(response.body));
     } catch(error) {
       rethrow;
     }

@@ -9,7 +9,7 @@ class PopularFNBFetching extends PopularFNBState {}
 
 class PopularFNBFetched extends PopularFNBState {
   final List<Meal> popularMeals;
-  final List<Drinks> popularBeverages;
+  final List<Drink> popularBeverages;
   PopularFNBFetched({required this.popularMeals, required this.popularBeverages});
 
   @override
