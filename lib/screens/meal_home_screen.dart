@@ -9,7 +9,6 @@ import 'package:astro_test/widgets/search_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-
 class MealHomeScreen extends StatefulWidget {
   static const routeName = '/meal_home_screen';
 
